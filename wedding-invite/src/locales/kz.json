@@ -1,0 +1,12 @@
+{
+  "welcome": "Bienvenido",
+  "inviteText": "¡Estamos ansiosos por celebrar contigo!",
+  "attendingLabel": "¿Asistirás?",
+  "options": {
+    "yes": "¡Sí, ahí estaré!",
+    "no": "Lamentablemente, no puedo ir"
+  },
+  "allergiesLabel": "¿Alguna alergia alimentaria?",
+  "submitBtn": "Enviar RSVP",
+  "successMsg": "¡Gracias! Tu respuesta ha sido guardada."
+}
