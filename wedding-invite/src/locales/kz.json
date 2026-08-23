@@ -8,5 +8,18 @@
   },
   "allergiesLabel": "¿Alguna alergia alimentaria?",
   "submitBtn": "Enviar RSVP",
-  "successMsg": "¡Gracias! Tu respuesta ha sido guardada."
+  "successMsg": "¡Gracias! Tu respuesta ha sido guardada.",
+  "details": {
+    "title": "Мерекенің егжей-тегжейі",
+    "whenLabel": "Қашан",
+    "date": "2027 жылғы 23 қаңтар",
+    "day": "Сенбі",
+    "whereLabel": "Қайда",
+    "venue": "Эль-Валье-де-Антон, Панама",
+    "mapUrl": "https://maps.app.goo.gl/4RScc2sJN21AuFwM6",
+    "mapLinkLabel": "Картадан қарау",
+    "dressLabel": "Киім коды",
+    "dressCode": "Бақша стиліндегі салтанатты киім",
+    "dressNote": "Жеңіл маталар ұсынылады — той тау бөктерінде, ашық аспан астында өтеді"
+  }
 }

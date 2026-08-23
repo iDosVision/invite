@@ -8,5 +8,18 @@
   },
   "allergiesLabel": "¿Alguna alergia alimentaria?",
   "submitBtn": "Enviar RSVP",
-  "successMsg": "¡Gracias! Tu respuesta ha sido guardada."
+  "successMsg": "¡Gracias! Tu respuesta ha sido guardada.",
+  "details": {
+    "title": "Los Detalles",
+    "whenLabel": "Cuándo",
+    "date": "23 de enero de 2027",
+    "day": "Sábado",
+    "whereLabel": "Dónde",
+    "venue": "El Valle de Antón, Panamá",
+    "mapUrl": "https://maps.google.com/?q=El+Valle+de+Anton+Panama",
+    "mapLinkLabel": "Ver en el mapa",
+    "dressLabel": "Código de Vestimenta",
+    "dressCode": "Formal de Jardín",
+    "dressNote": "Se recomiendan telas ligeras — estaremos al aire libre en la montaña"
+  }
 }

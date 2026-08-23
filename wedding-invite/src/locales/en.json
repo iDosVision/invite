@@ -1,7 +1,7 @@
 
 {
   "welcome": "Welcome",
-  "inviteText": "We can't wait to celebrate with you!",
+  "inviteText": "We're tying the knot, and we'd love to see you there.",
   "attendingLabel": "Will you be attending?",
   "options": {
     "yes": "Yes, I'll be there!",
@@ -9,7 +9,47 @@
   },
   "allergiesLabel": "Any food allergies?",
   "submitBtn": "Submit RSVP",
-  "transportNeeded": "I need transport to and from venue",
+  "transport": "I need transport to and from venue",
+  "rsvpTitle": "Please let us know",
   "successMsg": "We are thrilled to see you soon!",
-  "sadMsg": "We are sorry you can't attend. Hope we can catch up soon!"
+  "sadMsg": "We are sorry you can't attend. Hope we can catch up soon!",
+  "unknown_guest": "Person is not found, please try again or contact the broom.",
+  "success_save": "Your answer is saved, thank you!",
+  "validation_error": "Person is not found, please try again or contact the broom.",
+  "details": {
+    "title": "The Details",
+    "whenLabel": "When",
+    "date": "23 January 2027",
+    "day": "Saturday",
+    "whereLabel": "Where",
+    "venue": "Hotel Campestre, El Valle de Antón",
+    "mapUrl": "https://maps.app.goo.gl/4RScc2sJN21AuFwM6  ",
+    "mapLinkLabel": "View on map",
+    "church": "Church of San Jose, El Valle de Antón",
+    "churchUrl": "https://maps.app.goo.gl/2nKisaQn14WZVGU56",
+    "dressLabel": "Dress Code",
+    "dressCode": "Garden Formal",
+    "dressNote": "Light fabrics welcome — we'll be outdoors in the mountains",
+    "giftsLabel": "Gifts",
+    "giftsText": "Some text about gifts etc."
+  },
+  "travel": "Checkout our travel recommendations",
+  "thankYou": "Thank you",
+  "wish": {
+    "sending": "Sending...",
+    "send": "Send your wish",
+    "submitted": "Your wish has been shared with Monica & Aidos.",
+    "sendAnother": "Send another wish",
+    "guestBook": "Wishes",
+    "beFirst": "Be the first to leave a wish!",
+    "leaveNote": "Leave a Note for the Couple",
+    "placeholderNote": "Share a memory, wish, or blessing..."
+  },
+  "door": {
+    "tapToOpen": "Tap to open",
+    "invitationFor": "Invitation for",
+    "message": "Join us as we begin our forever.",
+    "enter": "Enter"
+  },
+  "weddingOf": "THE WEDDING OF"
 }
