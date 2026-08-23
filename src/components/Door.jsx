@@ -1,4 +1,6 @@
 import { useEffect, useRef, useState } from "react";
+import imgClosed from '../assets/door-closed.png';
+import imgOpen from '../assets/door-open.png';
 
 /**
  * Door.jsx — animated wedding-invitation door.
@@ -47,8 +49,6 @@ import { useEffect, useRef, useState } from "react";
 export default function Door({
   t,
   guestName = "",
-  imgClosed = "src/assets/door-closed.png",
-  imgOpen = "src/assets/door-open.png",
   onComplete,
   fadeDuration = 1200,
   zoomDuration = 3200,
@@ -58,10 +58,6 @@ export default function Door({
   const firedRef = useRef(false);
 
   const dt = t?.door ?? {};
-  const invitationLine = (dt.invitationFor ?? "Invitation for \n {name}").replace(
-    "{name}",
-    guestName
-  );
 
   // Step 1: once tapped, the closed image starts fading. Only once that
   // fade is fully done does the open image begin its zoom — sequential,

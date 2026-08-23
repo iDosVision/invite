@@ -1,25 +1,52 @@
 {
-  "welcome": "Bienvenido",
-  "inviteText": "¡Estamos ansiosos por celebrar contigo!",
-  "attendingLabel": "¿Asistirás?",
+  "welcome": "Bienvenidos",
+  "inviteText": "¡Nos casamos y nos encantaría que nos acompañes!",
+  "attendingLabel": "¿Nos acompañas?",
   "options": {
     "yes": "¡Sí, ahí estaré!",
-    "no": "Lamentablemente, no puedo ir"
+    "no": "Lamentablemente no podré ir"
   },
-  "allergiesLabel": "¿Alguna alergia alimentaria?",
-  "submitBtn": "Enviar RSVP",
-  "successMsg": "¡Gracias! Tu respuesta ha sido guardada.",
+  "allergiesLabel": "¿Tienes alguna alergia alimentaria?",
+  "submitBtn": "Confirmar asistencia",
+  "transport": "Necesito transporte al lugar del evento",
+  "rsvpTitle": "Por favor confirma tu asistencia",
+  "successMsg": "¡Nos alegra mucho saber que nos acompañarás!",
+  "sadMsg": "Lamentamos que no puedas asistir. ¡Esperamos vernos pronto!",
+  "unknown_guest": "No encontramos tu nombre en la lista. Por favor intenta de nuevo o contacta al novio.",
+  "success_save": "¡Tu respuesta ha sido guardada, muchas gracias!",
+  "validation_error": "No encontramos tu nombre en la lista. Por favor intenta de nuevo o contacta al novio.",
   "details": {
-    "title": "Los Detalles",
+    "title": "Detalles del evento",
     "whenLabel": "Cuándo",
     "date": "23 de enero de 2027",
     "day": "Sábado",
     "whereLabel": "Dónde",
-    "venue": "El Valle de Antón, Panamá",
-    "mapUrl": "https://maps.google.com/?q=El+Valle+de+Anton+Panama",
+    "venue": "Hotel Campestre, El Valle de Antón",
+    "mapUrl": "https://maps.app.goo.gl/4RScc2sJN21AuFwM6  ",
     "mapLinkLabel": "Ver en el mapa",
-    "dressLabel": "Código de Vestimenta",
+    "church": "Iglesia de San José, El Valle de Antón",
+    "churchUrl": "https://maps.app.goo.gl/2nKisaQn14WZVGU56",
+    "dressLabel": "Código de vestimenta",
     "dressCode": "Formal de Jardín",
-    "dressNote": "Se recomiendan telas ligeras — estaremos al aire libre en la montaña"
+    "dressNote": "Sugerimos telas frescas y ligeras — el evento será al aire libre en la montaña",
+    "giftsLabel": "Regalos",
+    "giftsText": "Texto sobre sugerencias de regalos, etc."
+  },
+  "travel": "Consulta nuestras recomendaciones de viaje",
+  "thankYou": "Muchas gracias",
+  "wish": {
+    "sending": "Enviando...",
+    "send": "Enviar felicitación",
+    "submitted": "Tu mensaje ha sido enviado a Monica & Aidos.",
+    "sendAnother": "Enviar otra felicitación",
+    "guestBook": "Libro de visitas",
+    "beFirst": "¡Sé el primero en dejar un mensaje!",
+    "leaveNote": "Deja unas palabras para los novios",
+    "placeholderNote": "Comparte un recuerdo, un deseo o una bendición..."
+  },
+  "door": {
+    "tapToOpen": "Toca para abrir",
+    "invitationFor": "Invitación para",
+    "message": "Acompáñanos a comenzar nuestro para siempre."
   }
 }

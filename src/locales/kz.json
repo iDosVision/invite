@@ -1,25 +1,52 @@
 {
-  "welcome": "Bienvenido",
-  "inviteText": "¡Estamos ansiosos por celebrar contigo!",
-  "attendingLabel": "¿Asistirás?",
+  "welcome": "Қош келдіңіз",
+  "inviteText": "Тоймызға келіп, қуанышымызға ортақтасыңыз!",
+  "attendingLabel": "Тойға келесіз бе?",
   "options": {
-    "yes": "¡Sí, ahí estaré!",
-    "no": "Lamentablemente, no puedo ir"
+    "yes": "Иә, міндетті түрде барамын!",
+    "no": "Өкінішке орай, бара алмаймын"
   },
-  "allergiesLabel": "¿Alguna alergia alimentaria?",
-  "submitBtn": "Enviar RSVP",
-  "successMsg": "¡Gracias! Tu respuesta ha sido guardada.",
+  "allergiesLabel": "Тамаққа аллергияңыз бар ма?",
+  "submitBtn": "Жауапты жіберу",
+  "transport": "Маған той өтетін жерге дейін көлік қажет",
+  "rsvpTitle": "Жауабыңызды білдіруіңізді сұраймыз",
+  "successMsg": "Сізді жақында көретінімізге өте қуаныштымыз!",
+  "sadMsg": "Келе алмайтыныңызға өкінішті. Жақында кездесуге үміттенеміз!",
+  "unknown_guest": "Аты-жөніңіз табылмады. Қайта байқап көріңіз немесе күйеу жігітке хабарласыңыз.",
+  "success_save": "Жауабыңыз сақталды, рақмет!",
+  "validation_error": "Аты-жөніңіз табылмады. Қайта байқап көріңіз немесе күйеу жігітке хабарласыңыз.",
   "details": {
-    "title": "Мерекенің егжей-тегжейі",
+    "title": "Той толығырақ",
     "whenLabel": "Қашан",
-    "date": "2027 жылғы 23 қаңтар",
+    "date": "23 қаңтар 2027 жыл",
     "day": "Сенбі",
     "whereLabel": "Қайда",
-    "venue": "Эль-Валье-де-Антон, Панама",
-    "mapUrl": "https://maps.app.goo.gl/4RScc2sJN21AuFwM6",
+    "venue": "Hotel Campestre, El Valle de Antón",
+    "mapUrl": "https://maps.app.goo.gl/4RScc2sJN21AuFwM6  ",
     "mapLinkLabel": "Картадан қарау",
-    "dressLabel": "Киім коды",
-    "dressCode": "Бақша стиліндегі салтанатты киім",
-    "dressNote": "Жеңіл маталар ұсынылады — той тау бөктерінде, ашық аспан астында өтеді"
+    "church": "Сан-Хосе шіркеуі, El Valle de Antón",
+    "churchUrl": "https://maps.app.goo.gl/2nKisaQn14WZVGU56",
+    "dressLabel": "Дресс-код",
+    "dressCode": "Garden Formal (Жеңіл ресми стиль)",
+    "dressNote": "Жеңіл матадан тігілген киімдер ыңғайлы болады — той тау бөктерінде, ашық аспан астында өтеді",
+    "giftsLabel": "Сыйлықтар",
+    "giftsText": "Сыйлықтар туралы ақпарат т.б."
+  },
+  "travel": "Саяхат бойынша ұсыныстарымызды қараңыз",
+  "thankYou": "Рақмет",
+  "wish": {
+    "sending": "Жіберілуде...",
+    "send": "Тілегіңізді жіберіңіз",
+    "submitted": "Сіздің тілегіңіз Моника мен Айдосқа жеткізілді.",
+    "sendAnother": "Тағы бір тілек жіберу",
+    "guestBook": "Тілек кітабы",
+    "beFirst": "Алғашқы болып тілек қалдырыңыз!",
+    "leaveNote": "Жас жубайларға жүрекжарды тілегіңізді қалдырыңыз",
+    "placeholderNote": "Естелікпен, тілекпен немесе батамен бөлісіңіз..."
+  },
+  "door": {
+    "tapToOpen": "Ашу үшін басыңыз",
+    "invitationFor": "Шақыру иесі",
+    "message": "Мәңгілік сапарымызды бірге бастауға шақырамыз."
   }
 }

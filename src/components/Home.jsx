@@ -7,15 +7,15 @@ import { Infinity } from 'ldrs/react';
 import 'ldrs/react/Infinity.css';
 import Door from './Door';
 import firstImage from '../assets/intro-us.png';
+import imgRings from '../assets/Rings.png';
+import imgLineLeft from '../assets/line-left.png';
+import imgLineRight from '../assets/line-right.png';
 import AddToCalendar from './AddToCalendar';
 import Wishes from './Wishes';
 
 const languages = { en, es, kz };
 
 const GOOGLE_SCRIPT_URL = import.meta.env.VITE_GOOGLE_SCRIPT_URL;
-const imgRings = 'src/assets/Rings.png';
-const imgLineLeft = 'src/assets/line-left.png';
-const imgLineRight = 'src/assets/line-right.png';
 
 const WeddingInvite = () => {
   const [guestInfo, setGuestInfo] = useState({

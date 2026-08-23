@@ -9,7 +9,7 @@
   },
   "allergiesLabel": "Any food allergies?",
   "submitBtn": "Submit RSVP",
-  "transport": "I need transport to and from venue",
+  "transport": "I need transport to the venue",
   "rsvpTitle": "Please let us know",
   "successMsg": "We are thrilled to see you soon!",
   "sadMsg": "We are sorry you can't attend. Hope we can catch up soon!",
@@ -42,14 +42,12 @@
     "sendAnother": "Send another wish",
     "guestBook": "Wishes",
     "beFirst": "Be the first to leave a wish!",
-    "leaveNote": "Leave a Note for the Couple",
+    "leaveNote": "Leave a note for the couple",
     "placeholderNote": "Share a memory, wish, or blessing..."
   },
   "door": {
     "tapToOpen": "Tap to open",
     "invitationFor": "Invitation for",
-    "message": "Join us as we begin our forever.",
-    "enter": "Enter"
-  },
-  "weddingOf": "THE WEDDING OF"
+    "message": "Join us as we begin our forever."
+  }
 }
