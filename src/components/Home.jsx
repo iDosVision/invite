@@ -38,6 +38,7 @@ const WeddingInvite = () => {
     const params = new URLSearchParams(window.location.search);
     const name = params.get('name') || 'Guest';
     const rawId = params.get('id') || '0.en';
+    const gender = params.get('g') || 'm';
 
     const idParts = rawId.split('.');
     const id = idParts[0] || '0';
@@ -49,6 +50,7 @@ const WeddingInvite = () => {
       name,
       lang: finalLang,
       askForTransport,
+      gender,
     });
   }, []);
 
@@ -76,7 +78,10 @@ const WeddingInvite = () => {
   }, []);
 
   const t = languages[guestInfo.lang];
-
+  const welcomeText = (guestInfo.gender === 'f' && guestInfo.lang === 'es') 
+    ? `${t.welcome.slice(0, -1)}a` 
+    : t.welcome;
+    
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -140,9 +145,9 @@ const WeddingInvite = () => {
           {/* Main Names */}
           <h1 
             className={`${pageLoaded && envelopeOpened ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}
-              text-3xl sm:text-5xl md:text-6xl font-serif tracking-wide text-white drop-shadow-xl leading-tight transition-all duration-1000 delay-150 ease-out`}
+              text-3xl sm:text-5xl md:text-6xl font-serif tracking-wide text-white drop-shadow-xl leading-tight transition-all duration-1000 delay-150 ease-out uppercase`}
           >
-            AIDOS <span className="font-sans text-xl sm:text-3xl font-light opacity-80 mx-1">&amp;</span> MONICA
+            AIDOS <span className="font-sans text-xl sm:text-3xl font-light opacity-80 mx-1">&amp;</span> Mónica
           </h1>
         </div>
 
@@ -162,7 +167,7 @@ const WeddingInvite = () => {
       <section className="relative px-6 sm:px-8 mt-10 mb-8 p-6 max-w-3xl mx-auto z-20">
         <div className="text-center">
           <p className="tangerine-regular text-[var(--pink)] text-5xl sm:text-6xl mb-6 ">
-            {t.welcome}, <br></br>{guestInfo.name}
+            {welcomeText}, <br></br>{guestInfo.name}
           </p>
 
           <p className="font-medium text-[var(--green)]/90 text-lg sm:text-xl leading-relaxed max-w-xl mx-auto">
@@ -428,14 +433,10 @@ const WeddingInvite = () => {
           <span className="hidden sm:inline text-slate-300">•</span>
           <p className="italic text-slate-500">
             Special thanks to{' '}
-            <a 
-              href="https://instagram.com/annelisa" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="not-italic font-medium text-[var(--pink)] hover:underline transition-colors"
+            <span className="not-italic font-medium text-[var(--pink)] hover:underline transition-colors"
             >
-              @annelisa
-            </a>{' '}
+              Annelisa
+            </span>{' '}
             for the drawings
           </p>
         </div>

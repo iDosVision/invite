@@ -2,50 +2,6 @@ import { useEffect, useRef, useState } from "react";
 import imgClosed from '../assets/door-closed.png';
 import imgOpen from '../assets/door-open.png';
 
-/**
- * Door.jsx — animated wedding-invitation door.
- *
- * Flow:
- *  1. Closed-door image fills the screen with the invitation text
- *     ("tap to open" + guest name) overlaid on top of it.
- *  2. One tap: the closed image fades out first (fadeDuration). Only
- *     once that fade finishes does the open-door image (a transparent
- *     PNG) start its slow zoom-in (zoomDuration) — sequential, not
- *     simultaneous — so whatever Home.jsx renders behind Door becomes
- *     visible through it as it zooms.
- *  3. Once the zoom finishes, `onComplete` fires — Home.jsx should stop
- *     rendering <Door /> at that point, leaving its own content
- *     unobstructed. Total time before onComplete = fadeDuration + zoomDuration.
- *
- * Door renders as a fixed full-screen overlay (z-50), so mount it
- * above your page content in Home.jsx:
- *
- *   {showDoor && <Door t={t} guestName="Marina & Sofía" onComplete={() => setShowDoor(false)} />}
- *   <HomeContent />
- *
- * ─────────────────────────────────────────────────────────────────
- * PROPS
- * ─────────────────────────────────────────────────────────────────
- * t             (required) Translation object for the current locale:
- *                 {
- *                   door: {
- *                     eyebrow:       string,
- *                     tapToOpen:     string,
- *                     invitationFor: string, // use {name} as placeholder
- *                   }
- *                 }
- * guestName     (string) Replaces {name} in invitationFor.
- * imgClosed     (string) Closed-door image path. Default "/images/door-closed.jpg"
- * imgOpen       (string) Open-door image path (transparent PNG recommended).
- *                        Default "/images/door-open.png"
- * onComplete    (fn)     Called once, after the open/zoom animation finishes.
- * fadeDuration  (number) ms for the closed-image fade-out. Default 700.
- * zoomDuration  (number) ms for the open-image zoom + fade. Default 3200.
- *
- * ─────────────────────────────────────────────────────────────────
- * FONTS — assumes `font-tangerine` and `font-ledger` are already
- * mapped in tailwind.config from your index.css @font-face rules.
- */
 export default function Door({
   t,
   guestName = "",
@@ -126,18 +82,18 @@ export default function Door({
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-black/40" />
 
-        <div className="absolute inset-x-0 bottom-12 flex flex-col items-center gap-3 px-6 text-center sm:bottom-16">
+        <div className="absolute inset-x-0 bottom-6 flex flex-col items-center gap-1 px-3 text-center sm:bottom-16">
           <p 
             className="font-tangerine max-w-xs text-xl leading-tight text-[#f4ecd8] drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)] sm:max-w-sm sm:text-4xl"
           >
             {dt.invitationFor}
           </p>
           <p 
-            className="tangerine-regular max-w-xs text-4xl leading-tight text-[#f4ecd8] drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)] sm:max-w-sm sm:text-4xl"
+            className="tangerine-regular max-w-xs text-5xl leading-tight text-[#f4ecd8] drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)] sm:max-w-sm sm:text-4xl"
           >
             {guestName}
           </p>
-          <span className="font-ledger animate-pulse text-[11px] tracking-[0.35em] text-[#e9dfc4]/90">
+          <span className="font-ledger uppercase animate-pulse text-[11px] tracking-[0.35em] text-[#e9dfc4]/90">
             {dt.tapToOpen ?? "Tap to open"}
           </span>
         </div>
