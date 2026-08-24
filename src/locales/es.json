@@ -1,5 +1,6 @@
 {
   "welcome": "Bienvenidos",
+  "addToCalendar": "Agregar al calendario",
   "inviteText": "¡Nos casamos y nos encantaría que nos acompañes!",
   "attendingLabel": "¿Nos acompañas?",
   "options": {
@@ -27,10 +28,10 @@
     "church": "Iglesia de San José, El Valle de Antón",
     "churchUrl": "https://maps.app.goo.gl/2nKisaQn14WZVGU56",
     "dressLabel": "Código de vestimenta",
-    "dressCode": "Formal de Jardín",
+    "dressCode": "Garden Formal",
     "dressNote": "Sugerimos telas frescas y ligeras — el evento será al aire libre en la montaña",
     "giftsLabel": "Regalos",
-    "giftsText": "Texto sobre sugerencias de regalos, etc."
+    "giftsText": "Tu presencia es nuestro mejor regalo. \n Si deseas hacernos un obsequio adicional, un aporte económico para nuestros proyectos juntos nos ayudará muchísimo a empezar este nuevo capítulo."
   },
   "travel": "Consulta nuestras recomendaciones de viaje",
   "thankYou": "Muchas gracias",

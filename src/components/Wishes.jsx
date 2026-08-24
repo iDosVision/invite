@@ -5,7 +5,7 @@ import 'ldrs/react/Infinity.css';
 const GOOGLE_SCRIPT_URL = import.meta.env.VITE_GOOGLE_SCRIPT_URL;
 
 // Apple-style native emojis for quick selection
-const APPLE_EMOJIS = ['🥂', '❤️', '💍', '✨', '🎉', '🌴', '🕊️', '💐', '🥳', '💌'];
+const APPLE_EMOJIS = ['❤️', '✨', '🎉', '🕊️', '💐', '🥂', '💍', '🤍', '🥳', '💌'];
 
 export default function Wishes({ guestInfo = { name: 'Guest', id: '0' }, t = {} }) {
   const [wishes, setWishes] = useState([]);

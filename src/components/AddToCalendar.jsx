@@ -55,21 +55,20 @@ const downloadIcs = () => {
   URL.revokeObjectURL(url);
 };
 
-const AddToCalendar = () => {
+const AddToCalendar = ({t={}}) => {
   const [open, setOpen] = useState(false);
-
   return (
-    <div className="relative inline-block font-['Ledger']">
+    <div className="relative inline-block font-['Ledger'] z-100">
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
         className="inline-block font-noto text-sm font-bold underline text-[var(--pink)] hover:text-[var(--green)] underline-offset-4 rounded-full px-5 py-2 hover:bg-[#808B58] hover:border-[#808B58] transition-all duration-300"
       >
-        Add to Calendar
+        {t.addToCalendar}
       </button>
 
       {open && (
-        <div className="absolute z-20 mt-3 left-1/2 -translate-x-1/2 w-48 bg-white/95 backdrop-blur-md border border-[#B2B699]/30 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.06)] overflow-hidden">
+        <div className="absolute z-100 mt-3 left-1/2 -translate-x-1/2 w-48 bg-white/95 border border-[#B2B699]/30 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.06)] overflow-hidden">
           <a
             href={buildGoogleUrl()}
             target="_blank"

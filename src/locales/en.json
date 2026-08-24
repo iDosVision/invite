@@ -1,6 +1,7 @@
 
 {
   "welcome": "Welcome",
+  "addToCalendar": "Add to calendar",
   "inviteText": "We're tying the knot, and we'd love to see you there.",
   "attendingLabel": "Will you be attending?",
   "options": {
@@ -31,7 +32,7 @@
     "dressCode": "Garden Formal",
     "dressNote": "Light fabrics welcome — we'll be outdoors in the mountains",
     "giftsLabel": "Gifts",
-    "giftsText": "Some text about gifts etc."
+    "giftsText": "Your presence at our celebration is the greatest gift of all. \n Should you wish to honor us with a gift, a financial contribution toward our future together would be deeply appreciated."
   },
   "travel": "Checkout our travel recommendations",
   "thankYou": "Thank you",

@@ -212,21 +212,19 @@ const WeddingInvite = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 ">
             
             {/* WHEN */}
-            <div className="bg-white/40 backdrop-blur-sm p-8 sm:p-12 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.02)] border border-[#B2B699]/20
+            <div className="relative z-20 bg-white/40 backdrop-blur-sm p-8 sm:p-12 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.02)] border border-[#B2B699]/20
             flex flex-col items-center text-center">
               <span className="font-noto text-sm uppercase tracking-widest text-[var(--pink)] mb-3">
                 {t.details.whenLabel}
               </span>
               <p className="font-semibold text-2xl mb-1 text-[var(--green)]">{t.details.date}</p>
-              <div className="mt-4 opacity-90 hover:opacity-100 transition-opacity">
-                <AddToCalendar />
+              <div className="mt-4 opacity-90 hover:opacity-100 transition-opacity z-100">
+                <AddToCalendar t={t} />
               </div>
             </div>
 
-            {/* <hr className="place-self-center my-3 border-t border-[var(--green)] w-1/8" /> */}
-
             {/* WHERE */}
-            <div className="bg-white/40 backdrop-blur-sm p-8 sm:p-12 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.02)] border border-[#B2B699]/20
+            <div className="relative z-10 bg-white/40 backdrop-blur-sm p-8 sm:p-12 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.02)] border border-[#B2B699]/20
             flex flex-col items-center text-center">
               <span className="font-noto text-sm uppercase tracking-widest text-[var(--pink)] mb-3">
                 {t.details.whereLabel}
@@ -374,55 +372,74 @@ const WeddingInvite = () => {
       </section>
 
      {/* DRESSCODE GIFTS SECTION */}
-      <section className="px-4 sm:px-6 pt-10 pb-12 z-20 relative">
+      <section className="px-4 sm:px-6 pt-10 pb-12 z-20 relative bg-(--dgreen) [clip-path:ellipse(100%_100%_at_50%_120%)]">
         <div className="max-w-4xl mx-auto">
           {/* Clean, minimalistic grid instead of borders and shadows */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 ">
 
             {/* DRESS CODE */}
-            <div className="p-8 sm:p-12
+            <div className="pt-25 pb-6 sm:pt-22
             flex flex-col items-center text-center">
-              <span className="font-noto text-sm uppercase tracking-widest text-[var(--pink)] mb-3">
+              <span className="font-noto text-sm uppercase tracking-widest text-[var(--lpink)] mb-3">
                 {t.details.dressLabel}
               </span>
-              <p className="font-semibold text-2xl mb-1 text-[var(--green)]">{t.details.dressCode}</p>
-              <p className="text-base font-noto text-[var(--green)]/70 mt-1">{t.details.dressNote}</p>
+              <p className="font-semibold text-2xl mb-1 text-white">{t.details.dressCode}</p>
+              <p className="text-base font-noto text-white/70 mt-1">{t.details.dressNote}</p>
             </div>
 
             {/* GIFTS */}
-            <div className="bg-white/40 backdrop-blur-sm p-8 sm:p-12 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.02)] border border-[#B2B699]/20
-            flex flex-col items-center text-center">
-              <span className="font-noto text-sm uppercase tracking-widest text-[var(--pink)] mb-3">
+            <div className="flex flex-col items-center text-center">
+              <span className="font-noto text-sm uppercase tracking-widest text-(--lpink) mb-3">
                 {t.details.giftsLabel}
               </span>
-              <p className="text-base font-noto text-[var(--green)]/70 mt-1">{t.details.giftsText}</p>
+              <p className="text-base font-noto text-white/70 mt-1">{t.details.giftsText}</p>
             </div>
-            
           </div>
         </div>
       </section>
 
 
       {/* TRAVEL LINK */}
-      <section className="px-4 sm:px-6 pb-12 text-center">
-        <Link 
-          to="/travel" 
-          target="_blank" 
-          className="inline-flex items-center gap-2 group"
-        >
-          <span className="font-noto underline tracking-[0.2em] text-sm text-[var(--pink)] group-hover:text-[#B2B699] transition-colors">
-            {t.travel}
-          </span>
-          <svg className="w-4 h-4 text-[var(--pink)] group-hover:text-[var(--pink)] transition-colors transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-          </svg>
-        </Link>      
+      <section className="px-4 sm:px-6 pb-12 pt-12 text-center">
+        <div className="w-full backdrop-blur-sm py-2 sm:py-6 px-6 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.02)] border border-(--pink)/20
+            flex flex-col items-center text-center">
+          <Link 
+            to="/travel" 
+            target="_blank" 
+          >
+            <span className="font-noto tracking-[0.2em] text-sm text-[var(--pink)] group-hover:text-[#B2B699] transition-colors">
+              {t.travel}
+            </span>
+          </Link> 
+        </div>     
       </section>
 
       {/* WISHES */}
       <section className="px-4 sm:px-6 pb-12 z-20 relative text-center">
         <Wishes guestInfo={guestInfo} t={t} />   
       </section>
+
+      <footer className="w-full py-8 px-4 text-center bg-transparent text-sm font-light text-slate-600">
+        <div className="flex flex-col font-noto sm:flex-row items-center justify-center gap-1 sm:gap-2">
+          <p>&copy; {new Date().getFullYear()}</p>
+          <p>
+            Developed with love by Broom 
+          </p>
+          <span className="hidden sm:inline text-slate-300">•</span>
+          <p className="italic text-slate-500">
+            Special thanks to{' '}
+            <a 
+              href="https://instagram.com/annelisa" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="not-italic font-medium text-[var(--pink)] hover:underline transition-colors"
+            >
+              @annelisa
+            </a>{' '}
+            for the drawings
+          </p>
+        </div>
+      </footer>
     </div>
   );
 };
