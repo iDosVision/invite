@@ -91,7 +91,7 @@ const itineraryPlaces = [
     description: "Nestled perfectly inside a massive volcanic crater just two hours from the city. Enjoy cooler mountain air, beautiful morning mist, hot springs, and lush hiking trails like La India Dormida.",
     recommendedStay: "1-2 Days",
     link: "https://www.google.com/maps/search/?api=1&query=el+valle+de+anton+panama",
-    tags: ["Nature", "Hiking", "Relaxation"],
+    tags: ["Wedding Location","Nature", "Hiking", "Relaxation"],
     imageUrl: "https://images.unsplash.com/photo-1620023617300-85f2fa663cb6?auto=format&fit=crop&w=800&q=80"
   },
   {
@@ -103,6 +103,26 @@ const itineraryPlaces = [
     link: "https://www.bocasdeltoro.com/",
     tags: ["Surfing", "Island Hopping", "Wildlife"],
     imageUrl: "https://images.unsplash.com/photo-1563820921008-01e4a3dfb7b1?auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    id: 11,
+    title: "Chiriquí",
+    subtitle: "Highland Cloud Forests & Coffee Country",
+    description: "The annual flower and coffee festival of Boquete will take place from the 15 to 17 of January. This Festival celebrates the region's rich agriculture, horticulture and coffee heritage. A breathtaking western province defined by the cool mountain town of Boquete, the towering Volcán Barú, world-famous Geisha coffee plantations, and remote island beaches off Boca Chica.",
+    recommendedStay: "3-5 Days",
+    link: "https://bestofchiriqui.org/",
+    tags: ["Hiking", "Coffee Tours", "Nature"],
+    imageUrl: "https://images.unsplash.com/photo-1599394022918-6c8473841a20?auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    id: 12,
+    title: "El Canal de Panamá",
+    subtitle: "Engineering Wonder of the World",
+    description: "An iconic 82-kilometer maritime shortcut connecting the Atlantic and Pacific oceans. Visit the Miraflores Visitor Center to watch massive cargo ships pass through the lock systems.",
+    recommendedStay: "1 Day",
+    link: "https://pancanal.com/",
+    tags: ["History", "Engineering", "Sightseeing"],
+    imageUrl: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=800&q=80"
   }
 ];
 
@@ -162,7 +182,7 @@ export default function PanamaItinerary() {
                   <h3 className="font-heading text-2xl md:text-3xl text-[#808B58] mb-1 uppercase tracking-wide">
                     {place.title}
                   </h3>
-                  <h4 className="font-script text-2xl text-[#DC6186] mb-4">
+                  <h4 className="font-script text-3xl text-[#DC6186] mb-4">
                     {place.subtitle}
                   </h4>
                   

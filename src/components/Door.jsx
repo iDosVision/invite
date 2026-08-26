@@ -5,6 +5,7 @@ import imgOpen from '../assets/door-open.png';
 export default function Door({
   t,
   guestName = "",
+  lang = "en",
   onComplete,
   fadeDuration = 1200,
   zoomDuration = 3200,
@@ -84,12 +85,12 @@ export default function Door({
 
         <div className="absolute inset-x-0 bottom-6 flex flex-col items-center gap-1 px-3 text-center sm:bottom-16">
           <p 
-            className="font-tangerine max-w-xs text-xl leading-tight text-[#f4ecd8] drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)] sm:max-w-sm sm:text-4xl"
+            className={`${lang === 'kz' ? 'font-noto-kz':'font-noto'} max-w-xs text-xl leading-tight text-[#f4ecd8] drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)] sm:max-w-sm sm:text-4xl`}
           >
             {dt.invitationFor}
           </p>
           <p 
-            className="tangerine-regular max-w-xs text-5xl leading-tight text-[#f4ecd8] drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)] sm:max-w-sm sm:text-4xl"
+            className={`${lang === 'kz' ? 'tangerine-regular-kz':'tangerine-regular'} max-w-xs text-5xl leading-tight text-[#f4ecd8] drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)] sm:max-w-sm sm:text-4xl`}
           >
             {guestName}
           </p>

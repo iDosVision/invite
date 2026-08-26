@@ -2,7 +2,7 @@
 {
   "welcome": "Welcome",
   "addToCalendar": "Add to calendar",
-  "inviteText": "We're tying the knot, and we'd love to see you there.",
+  "inviteText": "We're tying the knot, \n and we'd love to see you there.",
   "attendingLabel": "Will you be attending?",
   "options": {
     "yes": "Yes, I'll be there!",
@@ -14,13 +14,14 @@
   "rsvpTitle": "Please let us know",
   "successMsg": "We are thrilled to see you soon!",
   "sadMsg": "We are sorry you can't attend. Hope we can catch up soon!",
-  "unknown_guest": "Person is not found, please try again or contact the broom.",
+  "unknown_guest": "Person is not found, please try again or contact the groom.",
   "success_save": "Your answer is saved, thank you!",
-  "validation_error": "Person is not found, please try again or contact the broom.",
+  "validation_error": "Person is not found, please try again or contact the groom.",
   "details": {
     "title": "The Details",
     "whenLabel": "When",
     "date": "23 January 2027",
+    "time": "3:00 pm",
     "day": "Saturday",
     "whereLabel": "Where",
     "venue": "Hotel Campestre, El Valle de Antón",
@@ -30,7 +31,7 @@
     "churchUrl": "https://maps.app.goo.gl/2nKisaQn14WZVGU56",
     "dressLabel": "Dress Code",
     "dressCode": "Garden Formal",
-    "dressNote": "Light fabrics welcome — we'll be outdoors in the mountains",
+    "dressNote": "Please join us in formal attire in whatever color makes you feel your best, while avoiding white, cream, black, and gray. We recommend bringing a shawl or jacket to cover up during the church ceremony, and to keep you warm during our garden reception as it might get chilly at night.",
     "giftsLabel": "Gifts",
     "giftsText": "Your presence at our celebration is the greatest gift of all. \n Should you wish to honor us with a gift, a financial contribution toward our future together would be deeply appreciated."
   },

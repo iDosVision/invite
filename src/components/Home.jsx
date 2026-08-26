@@ -47,7 +47,7 @@ const WeddingInvite = () => {
 
     setGuestInfo({
       id,
-      name,
+      name: name.replace(/(\s+(?:and|y|e|&)\s+)/gi, '\n$1\n'),
       lang: finalLang,
       askForTransport,
       gender,
@@ -78,9 +78,19 @@ const WeddingInvite = () => {
   }, []);
 
   const t = languages[guestInfo.lang];
-  const welcomeText = (guestInfo.gender === 'f' && guestInfo.lang === 'es') 
-    ? `${t.welcome.slice(0, -1)}a` 
-    : t.welcome;
+  let welcomeText = t.welcome;
+  const spanishEndings = {
+    f:'a',
+    pm:'os',
+    pf:'as' 
+  }
+  
+  if (guestInfo.lang === 'es') {
+    const baseWelcome = t.welcome.replace(/o[s]?$/i, ''); 
+    const ending = spanishEndings[guestInfo.gender] || 'o';
+    
+    welcomeText = `${baseWelcome}${ending}`;
+  }
     
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -121,9 +131,9 @@ const WeddingInvite = () => {
   };
 
   return (
-    <div className="bg-[#F1EFEC] text-[var(--green)] min-h-screen overflow-x-hidden font-['Ledger'] selection:bg-[var(--pink)] selection:text-[#F1EFEC]">
+    <div className={`${guestInfo.lang === 'kz' ? 'font-serif-kz': ''} bg-[#F1EFEC] text-[var(--green)] min-h-screen overflow-x-hidden selection:bg-[var(--pink)] selection:text-[#F1EFEC]`}>
       {!envelopeOpened && (
-        <Door t={t} guestName={guestInfo.name} onComplete={() => setEnvelopeOpened(true)}/>
+        <Door t={t} guestName={guestInfo.name} lang={guestInfo.lang} onComplete={() => setEnvelopeOpened(true)}/>
       )}
 
 
@@ -133,7 +143,7 @@ const WeddingInvite = () => {
           {/* Subtitle / "The Wedding Of" */}
           <p 
             className={`${pageLoaded && envelopeOpened ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}
-              text-xl sm:text-sm md:text-base font-noto-600 tracking-[0.3em] uppercase text-white drop-shadow-lg mb-2 transition-all duration-1000 ease-out`}
+              text-sm sm:text-sm md:text-base ${guestInfo.lang === 'kz' ? 'font-noto-600-kz' : 'font-noto-600'} tracking-[0.3em] uppercase text-white drop-shadow-lg mb-2 transition-all duration-1000 ease-out`}
           >
             THE WEDDING
           </p>
@@ -145,9 +155,9 @@ const WeddingInvite = () => {
           {/* Main Names */}
           <h1 
             className={`${pageLoaded && envelopeOpened ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}
-              text-3xl sm:text-5xl md:text-6xl font-serif tracking-wide text-white drop-shadow-xl leading-tight transition-all duration-1000 delay-150 ease-out uppercase`}
+              text-3xl sm:text-5xl md:text-6xl font-serif tracking-wide text-white drop-shadow-2xl text-shadow-sm leading-tight transition-all duration-1000 delay-150 ease-out uppercase`}
           >
-            AIDOS <span className="font-sans text-xl sm:text-3xl font-light opacity-80 mx-1">&amp;</span> Mónica
+            Mónica<span className="font-sans text-xl sm:text-3xl font-light opacity-80 mx-1">&amp;</span>AIDOS
           </h1>
         </div>
 
@@ -166,20 +176,74 @@ const WeddingInvite = () => {
       {/* INVITATION CONTENT */}
       <section className="relative px-6 sm:px-8 mt-10 mb-8 p-6 max-w-3xl mx-auto z-20">
         <div className="text-center">
-          <p className="tangerine-regular text-[var(--pink)] text-5xl sm:text-6xl mb-6 ">
+          <p className={` ${guestInfo.lang === 'kz' ? 'tangerine-regular-kz' : 'tangerine-regular'} text-[var(--pink)] text-5xl sm:text-6xl mb-6 whitespace-pre-line`}>
             {welcomeText}, <br></br>{guestInfo.name}
           </p>
 
-          <p className="font-medium text-[var(--green)]/90 text-lg sm:text-xl leading-relaxed max-w-xl mx-auto">
+          <p className="font-medium text-[var(--green)]/90 whitespace-pre-line text-lg sm:text-xl leading-relaxed max-w-xl mx-auto">
             {t.inviteText}
           </p>
         </div>
       </section>
 
-      {/* Decorative Rings - Centered on boundary */}
+      {/* WEDDING DETAILS */}
+      <section className="px-4 sm:px-6 pt-4 pb-4 z-20 relative">
+        <div className="max-w-4xl mx-auto">
+          {/* Clean, minimalistic grid instead of borders and shadows */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 ">
+            
+            {/* WHEN */}
+            <div className="relative z-20 bg-white/40 backdrop-blur-sm p-8 sm:p-12 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.02)] border border-[#B2B699]/20
+            flex flex-col items-center justify-center h-full min-h-[200px] text-center">
+              <span className={`${guestInfo.lang === 'kz' ? 'font-noto-kz' : 'font-noto'} text-sm uppercase tracking-widest text-[var(--pink)] mb-3`}>
+                {t.details.whenLabel}
+              </span>
+              <p className="font-semibold text-2xl mb-1 text-[var(--green)]">{t.details.date}</p>
+              <p className="font-semibold text-sm mb-1 text-[var(--green)] whitespace-pre-line">{t.details.time}</p>
+              <div className="mt-4 opacity-90 hover:opacity-100 transition-opacity z-100">
+                <AddToCalendar t={t} />
+              </div>
+            </div>
+
+            {/* WHERE */}
+            <div className="relative z-10 bg-white/40 backdrop-blur-sm p-8 sm:p-12 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.02)] border border-[#B2B699]/20
+            flex flex-col items-center text-center">
+              <span className={`${guestInfo.lang === 'kz' ? 'font-noto-kz' : 'font-noto'} text-sm uppercase tracking-widest text-[var(--pink)] mb-3`}>
+                {t.details.whereLabel}
+              </span>
+
+              <p className="font-semibold text-2xl mb-1 text-[var(--green)]">
+                {t.details.church}
+                </p>
+              <a
+                href={t.details.churchUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`inline-block text-sm ${guestInfo.lang === 'kz' ? 'font-noto-kz' : 'font-noto'} font-bold text-[var(--pink)] hover:text-[var(--green)] transition-colors underline underline-offset-4 mt-2`}
+              >
+                {t.details.mapLinkLabel}
+              </a>
+
+              <p className="font-semibold text-2xl mb-1 mt-6 text-[var(--green)]">
+                {t.details.venue}
+                </p>
+              <a
+                href={t.details.mapUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`inline-block text-sm font-bold ${guestInfo.lang === 'kz' ? 'font-noto-kz' : 'font-noto'} text-[var(--pink)] hover:text-[var(--green)] transition-colors underline underline-offset-4 mt-2`}
+              >
+                {t.details.mapLinkLabel}
+              </a>
+            </div>            
+          </div>
+        </div>
+      </section>
+
+    {/* Decorative Rings - Centered on boundary */}
       <div className="relative w-full flex items-center justify-center my-6 pointer-events-none">
         {/* Left Line */}
-        <div className="shrink-0 mx-2 md:mx-4 z-10">
+        <div className="shrink-0 mx-2 md:mx-4 z-10 opacity-30">
           <img
             src={imgLineLeft}
             alt="lines"
@@ -193,13 +257,13 @@ const WeddingInvite = () => {
           <img
             src={imgRings}
             alt="rings"
-            className="w-32 md:w-32 h-auto object-contain"
+            className="w-36 md:w-32 h-auto object-contain"
             draggable={false}
           />
         </div>
 
         {/* Right Line */}
-        <div className="shrink-0 mx-2 md:mx-4 z-10">
+        <div className="shrink-0 mx-2 md:mx-4 z-10 opacity-30">
           <img
             src={imgLineRight}
             alt=""
@@ -209,62 +273,8 @@ const WeddingInvite = () => {
         </div>
       </div>
 
-
-      {/* WEDDING DETAILS */}
-      <section className="px-4 sm:px-6 pt-10 pb-12 z-20 relative">
-        <div className="max-w-4xl mx-auto">
-          {/* Clean, minimalistic grid instead of borders and shadows */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 ">
-            
-            {/* WHEN */}
-            <div className="relative z-20 bg-white/40 backdrop-blur-sm p-8 sm:p-12 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.02)] border border-[#B2B699]/20
-            flex flex-col items-center text-center">
-              <span className="font-noto text-sm uppercase tracking-widest text-[var(--pink)] mb-3">
-                {t.details.whenLabel}
-              </span>
-              <p className="font-semibold text-2xl mb-1 text-[var(--green)]">{t.details.date}</p>
-              <div className="mt-4 opacity-90 hover:opacity-100 transition-opacity z-100">
-                <AddToCalendar t={t} />
-              </div>
-            </div>
-
-            {/* WHERE */}
-            <div className="relative z-10 bg-white/40 backdrop-blur-sm p-8 sm:p-12 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.02)] border border-[#B2B699]/20
-            flex flex-col items-center text-center">
-              <span className="font-noto text-sm uppercase tracking-widest text-[var(--pink)] mb-3">
-                {t.details.whereLabel}
-              </span>
-
-              <p className="font-semibold text-2xl mb-1 text-[var(--green)]">
-                {t.details.church}
-                </p>
-              <a
-                href={t.details.churchUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block text-sm font-noto font-bold text-[var(--pink)] hover:text-[var(--green)] transition-colors underline underline-offset-4 mt-2"
-              >
-                {t.details.mapLinkLabel}
-              </a>
-
-              <p className="font-semibold text-2xl mb-1 mt-6 text-[var(--green)]">
-                {t.details.venue}
-                </p>
-              <a
-                href={t.details.mapUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block text-sm font-bold font-noto text-[var(--pink)] hover:text-[var(--green)] transition-colors underline underline-offset-4 mt-2"
-              >
-                {t.details.mapLinkLabel}
-              </a>
-            </div>            
-          </div>
-        </div>
-      </section>
-
       {/* RSVP SECTION */}
-      <section className="px-4 sm:px-6 pb-4 z-20 relative">
+      <section className="px-4 sm:px-6 z-20 relative">
         <div className="max-w-xl mx-auto">
           <div className="bg-white/60 backdrop-blur-md rounded-3xl p-8 sm:p-12 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-[#B2B699]/30">
             {loading && (
@@ -274,7 +284,7 @@ const WeddingInvite = () => {
             )}
 
             {errorMessage && (
-              <div className="text-[var(--pink)] font-noto bg-[var(--pink)]/10 py-3 px-4 rounded-xl text-center mb-6">
+              <div className={`text-[var(--pink)] ${guestInfo.lang === 'kz' ? 'font-noto-kz' : 'font-noto'} bg-[var(--pink)]/10 py-3 px-4 rounded-xl text-center mb-6`}>
                 {errorMessage}
               </div>
             )}
@@ -282,18 +292,18 @@ const WeddingInvite = () => {
             {!submitted ? (
               
               <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="text-center mb-10">
-                  <h2 className="font-noto uppercase tracking-[0.2em] text-xl text-[var(--green)]">
+                <div className="text-center mb-6">
+                  <h2 className="tracking-[0.1em] text-xl text-[var(--green)]">
                     {t.rsvpTitle}
                   </h2>
                 </div>
                 {/* Attendance */}
                 <div className="flex flex-col">
-                  <label className="font-noto text-sm tracking-wider text-[var(--pink)] mb-2">
+                  <label className={`${guestInfo.lang === 'kz' ? 'font-noto-kz' : 'font-noto'} text-sm tracking-wider text-[var(--pink)] mb-2`}>
                     {t.attendingLabel}
                   </label>
                   <select
-                    className="w-full rounded-xl font-noto border border-[#B2B699]/40 bg-white/50 px-4 py-3 text-[var(--green)] font-medium outline-none focus:border-[var(--pink)] focus:ring-1 focus:ring-[var(--pink)] transition-all cursor-pointer appearance-none"
+                    className={`w-full rounded-xl ${guestInfo.lang === 'kz' ? 'font-noto-kz' : 'font-noto'} border border-[#B2B699]/40 bg-white/50 px-4 py-3 text-[var(--green)] font-medium outline-none focus:border-[var(--pink)] focus:ring-1 focus:ring-[var(--pink)] transition-all cursor-pointer appearance-none`}
                     onChange={(e) =>
                       setFormData({
                         ...formData,
@@ -308,13 +318,13 @@ const WeddingInvite = () => {
 
                 {/* Allergies */}
                 <div className="flex flex-col">
-                  <label className="font-noto text-sm tracking-wider text-[var(--pink)] mb-2">
+                  <label className={`${guestInfo.lang === 'kz' ? 'font-noto-kz' : 'font-noto'} text-sm tracking-wider text-[var(--pink)] mb-2`}>
                     {t.allergiesLabel}
                   </label>
                   <textarea
                     rows={3}
-                    className="w-full font-noto rounded-xl border border-[#B2B699]/40 bg-white/50 px-4 py-3 text-[var(--green)] font-medium outline-none resize-none focus:border-[var(--pink)] focus:ring-1 focus:ring-[var(--pink)] transition-all"
-                    placeholder="None"
+                    className={`w-full ${guestInfo.lang === 'kz' ? 'font-noto-kz' : 'font-noto'} rounded-xl border border-[#B2B699]/40 bg-white/50 px-4 py-3 text-[var(--green)] font-medium outline-none resize-none focus:border-[var(--pink)] focus:ring-1 focus:ring-[var(--pink)] transition-all`}
+                    placeholder="..."
                     onChange={(e) =>
                       setFormData({
                         ...formData,
@@ -331,7 +341,7 @@ const WeddingInvite = () => {
                     <input
                       type="checkbox"
                       id="transport-check"
-                      className="peer font-noto h-5 w-5 cursor-pointer appearance-none rounded-md border border-[#B2B699] checked:border-[var(--pink)] checked:bg-[var(--pink)] transition-all"
+                      className={`peer ${guestInfo.lang === 'kz' ? 'font-noto-kz' : 'font-noto'} h-5 w-5 cursor-pointer appearance-none rounded-md border border-[#B2B699] checked:border-[var(--pink)] checked:bg-[var(--pink)] transition-all`}
                       onChange={(e) =>
                         setFormData({
                           ...formData,
@@ -346,7 +356,7 @@ const WeddingInvite = () => {
                       </svg>
                     </span>
                   </div>
-                  <label htmlFor="transport-check" className="text-base text-left font-noto text-[var(--green)] cursor-pointer select-none">
+                  <label htmlFor="transport-check" className={`text-base text-left ${guestInfo.lang === 'kz' ? 'font-noto-kz' : 'font-noto'} text-[var(--green)] cursor-pointer select-none`}>
                     {t.transport}
                   </label>
                 </div>
@@ -357,17 +367,17 @@ const WeddingInvite = () => {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full text-xs mt-4 rounded-full bg-[var(--pink)] text-white py-4 font-noto text-base tracking-[0.15em] uppercase transition-all hover:bg-[var(--green)] hover:shadow-lg active:scale-[0.98] disabled:opacity-70 disabled:cursor-not-allowed"
+                  className={`w-full text-xs mt-4 rounded-full bg-[var(--pink)] text-white py-4 ${guestInfo.lang === 'kz' ? 'font-noto-kz' : 'font-noto'} text-base tracking-[0.15em] uppercase transition-all hover:bg-[var(--green)] hover:shadow-lg active:scale-[0.98] disabled:opacity-70 disabled:cursor-not-allowed`}
                 >
                   {loading ? 'Processing...' : t.submitBtn}
                 </button>
               </form>
             ) : (
               <div className="text-center py-12">
-                <h4 className="tangerine-regular text-4xl text-[var(--pink)] mb-2">
+                <h4 className={` ${guestInfo.lang === 'kz' ? 'tangerine-regular-kz' : 'tangerine-regular'} text-4xl text-[var(--pink)] mb-2`}>
                   {t.thankYou}!
                 </h4>
-                <p className="font-noto text-l text-[var(--green)]/80">
+                <p className={`${guestInfo.lang === 'kz' ? 'font-noto-kz' : 'font-noto'} text-l text-[var(--green)]/80`}>
                   {formData.attending === 'yes' ? t.successMsg : t.sadMsg}
                 </p>
               </div>
@@ -377,7 +387,7 @@ const WeddingInvite = () => {
       </section>
 
      {/* DRESSCODE GIFTS SECTION */}
-      <section className="px-4 sm:px-6 pt-10 pb-12 z-20 relative bg-(--dgreen) [clip-path:ellipse(100%_100%_at_50%_120%)]">
+      <section className="px-4 sm:px-6 pt-24 pb-12 z-20 whitespace-pre-line relative bg-(--dgreen) [clip-path:ellipse(100%_100%_at_50%_120%)]">
         <div className="max-w-4xl mx-auto">
           {/* Clean, minimalistic grid instead of borders and shadows */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 ">
@@ -385,19 +395,19 @@ const WeddingInvite = () => {
             {/* DRESS CODE */}
             <div className="pt-25 pb-6 sm:pt-22
             flex flex-col items-center text-center">
-              <span className="font-noto text-sm uppercase tracking-widest text-[var(--lpink)] mb-3">
+              <span className={`${guestInfo.lang === 'kz' ? 'font-noto-kz' : 'font-noto'} text-m uppercase tracking-widest text-[var(--lpink)] mb-3`}>
                 {t.details.dressLabel}
               </span>
               <p className="font-semibold text-2xl mb-1 text-white">{t.details.dressCode}</p>
-              <p className="text-base font-noto text-white/70 mt-1">{t.details.dressNote}</p>
+              <p className={`text-base ${guestInfo.lang === 'kz' ? 'font-noto-kz' : 'font-noto'} text-white/90 mt-1 whitespace-pre-line`}>{t.details.dressNote}</p>
             </div>
 
             {/* GIFTS */}
-            <div className="flex flex-col items-center text-center">
-              <span className="font-noto text-sm uppercase tracking-widest text-(--lpink) mb-3">
+            <div className="flex flex-col items-center text-center whitespace-pre-line">
+              <span className={`${guestInfo.lang === 'kz' ? 'font-noto-kz' : 'font-noto'} text-m uppercase tracking-widest text-(--lpink) mb-3`}>
                 {t.details.giftsLabel}
               </span>
-              <p className="text-base font-noto text-white/70 mt-1">{t.details.giftsText}</p>
+              <p className={`text-base ${guestInfo.lang === 'kz' ? 'font-noto-kz' : 'font-noto'} text-white/90 mt-1`}>{t.details.giftsText}</p>
             </div>
           </div>
         </div>
@@ -412,7 +422,7 @@ const WeddingInvite = () => {
             to="/travel" 
             target="_blank" 
           >
-            <span className="font-noto tracking-[0.2em] text-sm text-[var(--pink)] group-hover:text-[#B2B699] transition-colors">
+            <span className={`${guestInfo.lang === 'kz' ? 'font-noto-kz' : 'font-noto'} tracking-[0.2em] text-sm text-[var(--pink)] group-hover:text-[#B2B699] transition-colors`}>
               {t.travel}
             </span>
           </Link> 
@@ -424,21 +434,25 @@ const WeddingInvite = () => {
         <Wishes guestInfo={guestInfo} t={t} />   
       </section>
 
-      <footer className="w-full py-8 px-4 text-center bg-transparent text-sm font-light text-slate-600">
-        <div className="flex flex-col font-noto sm:flex-row items-center justify-center gap-1 sm:gap-2">
-          <p>&copy; {new Date().getFullYear()}</p>
+      <footer className="w-full py-8 px-4 text-center bg-transparent text-sm font-light text-[var(--green)]/70">
+        <div className={`flex flex-col ${guestInfo.lang === 'kz' ? 'font-noto-kz' : 'font-noto'} sm:flex-row items-center justify-center gap-1 sm:gap-2`}>
           <p>
-            Developed with love by Broom 
+            Developed with love by the Groom 
           </p>
-          <span className="hidden sm:inline text-slate-300">•</span>
-          <p className="italic text-slate-500">
+          <span className="hidden sm:inline text-[var(--green)]/70">•</span>
+          <p className="italic text-[var(--green)]/70">
             Special thanks to{' '}
-            <span className="not-italic font-medium text-[var(--pink)] hover:underline transition-colors"
+            <a 
+              href="https://instagram.com/annelisadoestheart" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="not-italic font-medium text-[var(--pink)] hover:underline transition-colors"
             >
-              Annelisa
-            </span>{' '}
-            for the drawings
+              @annelisa
+            </a>{' '}{' '}
+            for the drawings <span className='text-(--pink)'>♡</span>
           </p>
+          <p>&copy; {new Date().getFullYear()}</p>
         </div>
       </footer>
     </div>

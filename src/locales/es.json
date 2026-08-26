@@ -19,6 +19,7 @@
   "details": {
     "title": "Detalles del evento",
     "whenLabel": "Cuándo",
+    "time": "A las 3:00 pm, \n agradecemos tu puntualidad",
     "date": "23 de enero de 2027",
     "day": "Sábado",
     "whereLabel": "Dónde",
@@ -29,9 +30,9 @@
     "churchUrl": "https://maps.app.goo.gl/2nKisaQn14WZVGU56",
     "dressLabel": "Código de vestimenta",
     "dressCode": "Garden Formal",
-    "dressNote": "Sugerimos telas frescas y ligeras — el evento será al aire libre en la montaña",
+    "dressNote": "Nos encantará verte con tu mejor atuendo formal y en el color que te haga sentir increíble; solo te pedimos evitar el blanco, crema, negro y gris. \n Les sugerimos llevar un chal o saco para cubrirse los hombros durante la ceremonia en la iglesia y para abrigarse por la noche.",
     "giftsLabel": "Regalos",
-    "giftsText": "Tu presencia es nuestro mejor regalo. \n Si deseas hacernos un obsequio adicional, un aporte económico para nuestros proyectos juntos nos ayudará muchísimo a empezar este nuevo capítulo."
+    "giftsText": "El mejor regalo es compartir este día contigo. \n Si además deseas tener un detalle con nosotros, agradeceremos de corazón un aporte económico que nos ayude a comenzar esta nueva etapa y a construir juntos nuestros sueños."
   },
   "travel": "Consulta nuestras recomendaciones de viaje",
   "thankYou": "Muchas gracias",

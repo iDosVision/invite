@@ -7,7 +7,7 @@ const GOOGLE_SCRIPT_URL = import.meta.env.VITE_GOOGLE_SCRIPT_URL;
 // Apple-style native emojis for quick selection
 const APPLE_EMOJIS = ['❤️', '✨', '🎉', '🕊️', '💐', '🥂', '💍', '🤍', '🥳', '💌'];
 
-export default function Wishes({ guestInfo = { name: 'Guest', id: '0' }, t = {} }) {
+export default function Wishes({ guestInfo = { name: 'Guest', id: '0', lang: 'en' }, t = {} }) {
   const [wishes, setWishes] = useState([]);
   const [formData, setFormData] = useState({ message: '' });
   const [loading, setLoading] = useState(false);
@@ -116,7 +116,7 @@ export default function Wishes({ guestInfo = { name: 'Guest', id: '0' }, t = {} 
 
           {submitted ? (
             <div className="text-center py-6">
-              <h4 className="tangerine-regular text-4xl text-[var(--pink)] mb-2">
+              <h4 className={`${guestInfo.lang === 'kz' ? 'tangerine-regular-kz':'tangerine-regular'} text-4xl text-[var(--pink)] mb-2`}>
                 {t.thankYou}, {guestInfo.name}!
               </h4>
               <p className="text-sm font-medium text-[var(--green)]/80">
@@ -131,22 +131,22 @@ export default function Wishes({ guestInfo = { name: 'Guest', id: '0' }, t = {} 
               </button>
             </div>
           ) : (
-            <section className="px-4 sm:px-6 pb-4 z-20 relative">
+            <section className="pb-4 z-20 relative">
                 <form onSubmit={submitWishes} className="space-y-6">
-                <div className="flex flex-col">
-                    <h2 className="font-noto uppercase tracking-[0.2em] pb-6 text-sm text-[var(--green)]">
-                    {t.wish.leaveNote}
+                  <div className="flex flex-col">
+                    <h2 className="tracking-[0.1em] pb-6 text-xl text-[var(--green)]">
+                      {t.wish.leaveNote}
                     </h2>
                     
                     <textarea
-                    rows={4}
-                    required
-                    value={formData.message}
-                    onChange={(e) => setFormData({ message: e.target.value })}
-                    placeholder={t.wish.placeholderNote}
-                    className="w-full font-noto rounded-2xl border border-[#B2B699]/40 bg-white/50 px-4 py-3 text-[var(--green)] font-medium outline-none resize-none focus:border-[var(--pink)] focus:ring-1 focus:ring-[var(--pink)] transition-all text-sm placeholder-[#B2B699]"
+                      rows={4}
+                      required
+                      value={formData.message}
+                      onChange={(e) => setFormData({ message: e.target.value })}
+                      placeholder={t.wish.placeholderNote}
+                      className="w-full font-noto rounded-2xl border border-[#B2B699]/40 bg-white/50 px-4 py-3 text-[var(--green)] font-medium outline-none resize-none focus:border-[var(--pink)] focus:ring-1 focus:ring-[var(--pink)] transition-all text-sm placeholder-[#B2B699]"
                     />
-                </div>
+                  </div>
 
                 {/* APPLE EMOJI BAR */}
                 <div className="flex items-center justify-between bg-white/40 border border-[#B2B699]/20 rounded-2xl p-2 px-3 overflow-x-auto no-scrollbar">

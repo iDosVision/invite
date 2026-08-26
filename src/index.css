@@ -1,5 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Ledger&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Tangerine:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ledger&family=Lobster&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Tangerine:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
 @import "tailwindcss";
+
+@font-face {
+  font-family: 'HandwrittenKZ';
+  src: url('./assets/Anjhay.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 
 :root {
   --text: #6b6375;
@@ -79,7 +88,7 @@ body {
 
 .font-noto {
   font-family: "Noto Sans", sans-serif;
-  font-weight: 300;
+  font-weight: 350;
   font-style: normal;
   font-variation-settings: "wdth" 100;
 }
@@ -91,3 +100,33 @@ body {
   font-variation-settings: "wdth" 100;
 }
 
+.tangerine-regular-kz {
+  font-family: "HandwrittenKZ", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.font-noto-kz {
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 350;
+  font-style: normal;
+  font-variation-settings:"wdth" 100;
+}
+
+.font-noto-600-kz {
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  font-variation-settings:"wdth" 100;
+}
+
+
+.font-serif-kz {
+  font-family: "Noto Serif", serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+  font-variation-settings:"wdth" 100;
+}
