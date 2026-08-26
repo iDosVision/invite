@@ -16,8 +16,8 @@ export default function Wishes({ guestInfo = { name: 'Guest', id: '0', lang: 'en
   const [errorMessage, setErrorMessage] = useState('');
 
   // Fetch all wishes from Google Sheets on load
-  const fetchWishes = async () => {
-    setFetching(true);
+  const fetchWishes = async (showLoadingIndicator = true) => {
+    if (showLoadingIndicator) setFetching(true);
     try {
       const response = await fetch(`${GOOGLE_SCRIPT_URL}?type=wish`);
       if (response.ok) {
@@ -32,7 +32,7 @@ export default function Wishes({ guestInfo = { name: 'Guest', id: '0', lang: 'en
     } catch (error) {
       console.error('Error fetching wishes:', error);
     } finally {
-      setFetching(false);
+      if (showLoadingIndicator) setFetching(false);
     }
   };
 
@@ -51,11 +51,12 @@ export default function Wishes({ guestInfo = { name: 'Guest', id: '0', lang: 'en
   // Submit wish to Google Sheets
   const submitWishes = async (e) => {
     e.preventDefault();
-    if (!formData.message.trim()) return;
+    const currentMessage = formData.message.trim();
+    if (!currentMessage) return;
     setLoading(true);
 
     const payload = {
-      ...formData,
+      message: currentMessage,
       name: guestInfo.name,
       id: guestInfo.id,
       type: 'wish',
@@ -76,16 +77,18 @@ export default function Wishes({ guestInfo = { name: 'Guest', id: '0', lang: 'en
       const result = await response.json();
       if (result.status === 'success') {
         setSubmitted(true);
-        // Add new wish directly to list for instant UX feedback
+        // Add new wish directly to list using captured message
         setWishes((prev) => [
           {
             name: guestInfo.name,
-            message: formData.message,
+            message: currentMessage,
             date: new Date().toISOString(),
           },
           ...prev,
         ]);
         setFormData({ message: '' });
+        // Optionally pull latest remote data in background
+        fetchWishes(false);
       } else {
         setSubmitted(false);
         setErrorMessage(t[result.message] || 'Could not submit your wish.');
@@ -120,14 +123,14 @@ export default function Wishes({ guestInfo = { name: 'Guest', id: '0', lang: 'en
                 {t.thankYou}, {guestInfo.name}!
               </h4>
               <p className="text-sm font-medium text-[var(--green)]/80">
-                {t.wish.submitted}
+                {t.wish?.submitted}
               </p>
               <button
                 type="button"
                 onClick={() => setSubmitted(false)}
                 className="mt-4 text-xs font-noto tracking-wider text-[var(--pink)] underline underline-offset-4"
               >
-                {t.wish.sendAnother}
+                {t.wish?.sendAnother}
               </button>
             </div>
           ) : (
@@ -135,7 +138,7 @@ export default function Wishes({ guestInfo = { name: 'Guest', id: '0', lang: 'en
                 <form onSubmit={submitWishes} className="space-y-6">
                   <div className="flex flex-col">
                     <h2 className="tracking-[0.1em] pb-6 text-xl text-[var(--green)]">
-                      {t.wish.leaveNote}
+                      {t.wish?.leaveNote}
                     </h2>
                     
                     <textarea
@@ -143,7 +146,7 @@ export default function Wishes({ guestInfo = { name: 'Guest', id: '0', lang: 'en
                       required
                       value={formData.message}
                       onChange={(e) => setFormData({ message: e.target.value })}
-                      placeholder={t.wish.placeholderNote}
+                      placeholder={t.wish?.placeholderNote}
                       className="w-full font-noto rounded-2xl border border-[#B2B699]/40 bg-white/50 px-4 py-3 text-[var(--green)] font-medium outline-none resize-none focus:border-[var(--pink)] focus:ring-1 focus:ring-[var(--pink)] transition-all text-sm placeholder-[#B2B699]"
                     />
                   </div>
@@ -170,7 +173,7 @@ export default function Wishes({ guestInfo = { name: 'Guest', id: '0', lang: 'en
                     disabled={loading || !formData.message.trim()}
                     className="w-full mt-4 text-xs rounded-full bg-[var(--pink)] text-white py-4 font-noto text-base tracking-[0.15em] uppercase transition-all hover:bg-[var(--green)] hover:shadow-lg active:scale-[0.98] disabled:opacity-80 disabled:cursor-not-allowed"
                 >
-                    {loading ? t.wish.sending : t.wish.send}
+                    {loading ? t.wish?.sending : t.wish?.send}
                 </button>
                 </form>
             </section>
@@ -181,7 +184,7 @@ export default function Wishes({ guestInfo = { name: 'Guest', id: '0', lang: 'en
         <div className="space-y-6">
           <div className="text-center">
             <span className="font-noto text-xs uppercase tracking-widest text-[#B2B699]">
-              {t.wish.guestBook}
+              {t.wish?.guestBook}
             </span>
           </div>
 
@@ -191,7 +194,7 @@ export default function Wishes({ guestInfo = { name: 'Guest', id: '0', lang: 'en
             </div>
           ) : wishes.length === 0 ? (
             <div className="text-center py-8 bg-white/20 rounded-2xl border border-[#B2B699]/20">
-              <p className="text-sm text-[var(--green)]/70 font-medium">{t.wish.beFirst}</p>
+              <p className="text-sm text-[var(--green)]/70 font-medium">{t.wish?.beFirst}</p>
             </div>
           ) : (
             <div className="space-y-4">

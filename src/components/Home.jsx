@@ -44,13 +44,12 @@ const WeddingInvite = () => {
     const id = idParts[0] || '0';
     const finalLang = idParts[1] && languages[idParts[1]] ? idParts[1] : 'en';
     const askForTransport = idParts[2] ? true : false;
-
     setGuestInfo({
       id,
-      name: name.replace(/(\s+(?:and|y|e|&)\s+)/gi, '\n$1\n'),
+      name,
       lang: finalLang,
       askForTransport,
-      gender,
+      gender: gender.toString().toLowerCase(),
     });
   }, []);
 
@@ -177,10 +176,10 @@ const WeddingInvite = () => {
       <section className="relative px-6 sm:px-8 mt-10 mb-8 p-6 max-w-3xl mx-auto z-20">
         <div className="text-center">
           <p className={` ${guestInfo.lang === 'kz' ? 'tangerine-regular-kz' : 'tangerine-regular'} text-[var(--pink)] text-5xl sm:text-6xl mb-6 whitespace-pre-line`}>
-            {welcomeText}, <br></br>{guestInfo.name}
+            {welcomeText}, <br></br>{guestInfo.name.replace(/(\s+(?:and|y|e|&|,|және)\s+)/gi, '\n$1\n')}
           </p>
 
-          <p className="font-medium text-[var(--green)]/90 whitespace-pre-line text-lg sm:text-xl leading-relaxed max-w-xl mx-auto">
+          <p className="font-medium text-[var(--green)] whitespace-pre-line text-lg sm:text-xl leading-relaxed max-w-xl mx-auto">
             {t.inviteText}
           </p>
         </div>
