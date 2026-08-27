@@ -1,6 +1,7 @@
 {
   "welcome": "Bienvenido",
   "addToCalendar": "Agregar al calendario",
+  "personCountText": "Hemos reservado 1 puesto(s)",
   "inviteText": "¡Nos casamos y nos encantaría que nos acompañes!",
   "attendingLabel": "¿Nos acompañas?",
   "options": {

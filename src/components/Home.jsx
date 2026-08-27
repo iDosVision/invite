@@ -84,11 +84,20 @@ const WeddingInvite = () => {
     pf:'as' 
   }
   
+  let infoCountText = t.personCountText || '';
+
   if (guestInfo.lang === 'es') {
     const baseWelcome = t.welcome.replace(/o[s]?$/i, ''); 
     const ending = spanishEndings[guestInfo.gender] || 'o';
     
     welcomeText = `${baseWelcome}${ending}`;
+    const nameLower = guestInfo.name.toLowerCase();
+
+    if (nameLower.includes('famila')) {
+      infoCountText = infoCountText.replace('1', '4');
+    } else if (nameLower.includes(' y ') || nameLower.includes(' & ')) {
+      infoCountText = infoCountText.replace('1', '2');
+    }
   }
     
   const handleSubmit = async (e) => {
@@ -295,6 +304,9 @@ const WeddingInvite = () => {
                   <h2 className="tracking-[0.1em] text-xl text-[var(--green)]">
                     {t.rsvpTitle}
                   </h2>
+                  <p className='font-noto pt-2 text-sm tracking-wider text-(--lgreen) mb-2'>
+                    {infoCountText}
+                  </p>
                 </div>
                 {/* Attendance */}
                 <div className="flex flex-col">
