@@ -207,14 +207,6 @@ export default function Wishes({ guestInfo = { name: 'Guest', id: '0', lang: 'en
                     <p className="font-noto text-base text-sm tracking-wide text-[var(--pink)]">
                       {wish.name || 'Anonymous Guest'}
                     </p>
-                    {wish.date && (
-                      <span className="text-[11px] font-medium text-[#B2B699]">
-                        {new Date(wish.date).toLocaleDateString(undefined, {
-                          month: 'short',
-                          day: 'numeric',
-                        })}
-                      </span>
-                    )}
                   </div>
                   <p className="text-sm text-left font-noto text-[var(--green)]/90 leading-relaxed whitespace-pre-line">
                     {wish.message}
